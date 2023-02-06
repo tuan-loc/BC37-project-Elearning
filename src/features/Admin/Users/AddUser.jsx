@@ -55,7 +55,7 @@ const AddUser = () => {
       }}
       className="pb-10"
     >
-      <h3 className="text-3xl pt-8">Thêm người dùng</h3>
+      <h3 className="text-3xl py-8">Thêm người dùng</h3>
       <Form.Item label="Tài khoản">
         <Input
           name="taiKhoan"

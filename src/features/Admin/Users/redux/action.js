@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
   addUser,
   deleteUser,
@@ -55,4 +56,9 @@ export const addUserAction = (formData) => async (next) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const logoutAction = () => {
+  localStorage.removeItem("TOKEN");
+  localStorage.removeItem("USER_LOGIN");
 };

@@ -1,3 +1,5 @@
+import Footer from "features/Home/components/Footer";
+import Header from "features/Home/components/Header";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
@@ -14,9 +16,10 @@ const UserTemplate = () => {
 
   return (
     <>
+      <Header />
       <div className="lg:flex">
         <Outlet />
-        <div className="hidden lg:flex items-center justify-center bg-indigo-100 flex-1 h-screen">
+        <div className="hidden lg:flex items-center justify-center bg-yellow-100 flex-1 h-screen">
           <div className="max-w-xs transform duration-200 hover:scale-110 cursor-pointer">
             <svg
               className="w-5/6 mx-auto"
@@ -175,6 +178,7 @@ const UserTemplate = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

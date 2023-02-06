@@ -1,5 +1,6 @@
 import { Button } from "antd";
 import { fetchInfoUserAccountAction } from "features/Admin/Courses/redux/actions";
+import { logoutAction } from "features/Admin/Users/redux/action";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -92,6 +93,18 @@ const Profile = () => {
               Xem khóa học của tôi
             </Button>
           </NavLink>
+          <Button
+            onClick={() => {
+              logoutAction();
+              navigate("/");
+              window.location.reload();
+            }}
+            className="ml-2 mt-6"
+            type="primary"
+            size="large"
+          >
+            Đăng xuất
+          </Button>
         </div>
       </div>
     </div>

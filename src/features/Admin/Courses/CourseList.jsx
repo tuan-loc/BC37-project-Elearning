@@ -1,4 +1,8 @@
-import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import {
+  DeleteOutlined,
+  EditOutlined,
+  FilterOutlined,
+} from "@ant-design/icons";
 import { Button, Pagination, Table, Input } from "antd";
 import React, { Fragment } from "react";
 import { useEffect } from "react";
@@ -113,7 +117,7 @@ const CoursesList = () => {
     {
       title: "Hành động",
       dataIndex: "hanhDong",
-      width: 100,
+      width: 140,
       render: (text, course) => {
         return (
           <Fragment>
@@ -137,6 +141,12 @@ const CoursesList = () => {
             >
               <DeleteOutlined />
             </NavLink>
+            <NavLink
+              to={`/admin/register/user-list/${course.maKhoaHoc}`}
+              className="bg-black text-white ml-2 p-2 rounded"
+            >
+              <FilterOutlined />
+            </NavLink>
           </Fragment>
         );
       },
@@ -150,7 +160,7 @@ const CoursesList = () => {
   return (
     <div>
       <div className="flex justify-between items-center">
-        <h3 className="text-3xl">Quản lý khóa học</h3>
+        <h3 className="text-3xl py-8">Quản lý khóa học</h3>
         <NavLink to="/admin/courses/add-course">
           <Button type="primary">Thêm khóa học</Button>
         </NavLink>

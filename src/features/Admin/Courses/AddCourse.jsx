@@ -104,7 +104,7 @@ const AddCourse = () => {
         }}
         className="pb-10"
       >
-        <h3 className="text-3xl pt-8">Thêm khóa học</h3>
+        <h3 className="text-3xl py-8">Thêm khóa học</h3>
         <Form.Item label="Mã khóa học">
           <Input
             name="maKhoaHoc"

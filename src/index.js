@@ -15,6 +15,7 @@ root.render(
         theme={{
           token: {
             colorPrimary: "#e1b700",
+            colorBgTextHover: "#e1b700",
           },
         }}
       >

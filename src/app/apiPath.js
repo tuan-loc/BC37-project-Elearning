@@ -21,4 +21,13 @@ export const apiPath = {
   GET_COURSE_LIST_PAGE: "/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc_PhanTrang",
   REGISTER_COURSE: "/api/QuanLyKhoaHoc/DangKyKhoaHoc",
   CANCEL_REGISTER: "/api/QuanLyKhoaHoc/HuyGhiDanh",
+  GET_USER_LIST_NOT_REGISTER:
+    "/api/QuanLyNguoiDung/LayDanhSachNguoiDungChuaGhiDanh",
+  GET_USER_LIST_REGISTER: "/api/QuanLyNguoiDung/LayDanhSachHocVienKhoaHoc",
+  GET_USER_LIST_APPROVE: "/api/QuanLyNguoiDung/LayDanhSachHocVienChoXetDuyet",
+  CONFIRM_REGISTER_COURSE: "/api/QuanLyKhoaHoc/GhiDanhKhoaHoc",
+  GET_COURSE_NOT_REGISTER: "/api/QuanLyNguoiDung/LayDanhSachKhoaHocChuaGhiDanh",
+  GET_COURSE_LIST_APPROVED: "/api/QuanLyNguoiDung/LayDanhSachKhoaHocDaXetDuyet",
+  GET_COURSE_LIST_WAIT_APPROVE:
+    "/api/QuanLyNguoiDung/LayDanhSachKhoaHocChoXetDuyet",
 };

@@ -1,15 +1,15 @@
 import {
   FileAddOutlined,
-  FileOutlined,
   FileTextOutlined,
   PlayCircleOutlined,
   TeamOutlined,
   UserAddOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu, theme } from "antd";
+import { Button, Layout, Menu, theme } from "antd";
 import SubMenu from "antd/es/menu/SubMenu";
-import { useState } from "react";
+import { logoutAction } from "features/Admin/Users/redux/action";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 const { Header, Content, Sider } = Layout;
@@ -23,9 +23,11 @@ const AdminTemplate = () => {
     token: { colorBgContainer },
   } = theme.useToken();
 
-  if (userSignin.maLoaiNguoiDung !== "GV") {
-    return navigate("/");
-  }
+  useEffect(() => {
+    if (userSignin.maLoaiNguoiDung !== "GV") {
+      return navigate("/");
+    }
+  }, [userSignin]);
 
   return (
     <Layout
@@ -38,12 +40,10 @@ const AdminTemplate = () => {
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}
       >
-        <div
-          style={{
-            height: 32,
-            margin: 16,
-            background: "rgba(255, 255, 255, 0.2)",
-          }}
+        <img
+          src="/img/600e8df5132cb60024b04964.jpg"
+          alt=""
+          className="w-full"
         />
         <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
           <SubMenu key="sub1" icon={<UserOutlined />} title="Users">
@@ -55,10 +55,10 @@ const AdminTemplate = () => {
             </Menu.Item>
           </SubMenu>
           <SubMenu key="sub2" icon={<PlayCircleOutlined />} title="Courses">
-            <Menu.Item key="16" icon={<FileTextOutlined />}>
+            <Menu.Item key="3" icon={<FileTextOutlined />}>
               <NavLink to="/admin/courses">Course List</NavLink>
             </Menu.Item>
-            <Menu.Item key="14" icon={<FileAddOutlined />}>
+            <Menu.Item key="4" icon={<FileAddOutlined />}>
               <NavLink to="/admin/courses/add-course">Add Course</NavLink>
             </Menu.Item>
           </SubMenu>
@@ -70,8 +70,25 @@ const AdminTemplate = () => {
             padding: 0,
             background: colorBgContainer,
           }}
+          className="flex items-center justify-end"
         >
-          abc
+          <div className="flex items-center">
+            <Button
+              onClick={() => {
+                logoutAction();
+                navigate("/");
+                window.location.reload();
+              }}
+              type="primary"
+            >
+              Đăng xuất
+            </Button>
+            <img
+              src="/img/50d429ea5c9afe0ef9cb3c96f784bea4.jpg"
+              className="w-14 rounded-full mx-4"
+              alt=""
+            />
+          </div>
         </Header>
         <Content
           style={{

@@ -5,12 +5,14 @@ import userListReducer from "features/Admin/Users/redux/adminSlice";
 import userReducer from "features/User/redux/userSlice";
 import courseListReducer from "features/Admin/Courses/redux/courseSlice";
 import homeReducer from "features/Home/redux/homeSlice";
+import registerReducer from "features/Admin/Register/redux/registerSlice";
 
 const reducer = combineReducers({
   userListReducer: userListReducer,
   userReducer: userReducer,
   courseListReducer: courseListReducer,
   homeReducer: homeReducer,
+  registerReducer: registerReducer,
 });
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));

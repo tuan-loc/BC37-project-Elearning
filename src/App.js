@@ -20,6 +20,8 @@ import HomeTemplate from "templates/HomeTemplate/HomeTemplate";
 import UserTemplate from "templates/UserTemplate/UserTemplate";
 import "./App.css";
 import Search from "features/Home/Search";
+import UserListRegister from "features/Admin/Register/UserListRegister";
+import CourseListRegister from "features/Admin/Register/CourseListRegister";
 
 function App() {
   return (
@@ -63,6 +65,16 @@ function App() {
             path="/admin/courses/edit-course/:id"
             exact
             element={<EditCourse />}
+          />
+          <Route
+            path="/admin/register/user-list/:id"
+            exact
+            element={<UserListRegister />}
+          />
+          <Route
+            path="/admin/register/course-list/:id"
+            exact
+            element={<CourseListRegister />}
           />
         </Route>
         <Route path="/user" exact element={<UserTemplate />}>

@@ -1,4 +1,8 @@
-import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import {
+  DeleteOutlined,
+  EditOutlined,
+  FilterOutlined,
+} from "@ant-design/icons";
 import { Button, Pagination, Table, Input } from "antd";
 import React, { Fragment } from "react";
 import { useEffect } from "react";
@@ -86,6 +90,12 @@ const UsersList = () => {
             >
               <DeleteOutlined />
             </NavLink>
+            <NavLink
+              to={`/admin/register/course-list/${user.taiKhoan}`}
+              className="bg-black text-white ml-2 p-2 rounded"
+            >
+              <FilterOutlined />
+            </NavLink>
           </Fragment>
         );
       },
@@ -99,7 +109,7 @@ const UsersList = () => {
   return (
     <div>
       <div className="flex justify-between items-center">
-        <h3 className="text-3xl">Quản lý người dùng</h3>
+        <h3 className="text-3xl py-8">Quản lý người dùng</h3>
         <NavLink to="/admin/users/add-user">
           <Button type="primary">Thêm người dùng</Button>
         </NavLink>
