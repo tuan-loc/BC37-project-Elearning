@@ -1,7 +1,7 @@
 import {
   cancelRegisterCourse,
   registerCourse,
-} from "features/Home/Home/utils/homeService";
+} from "features/Home/utils/homeService";
 import {
   addCourse,
   addCourseUploadImage,

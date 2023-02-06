@@ -8,7 +8,6 @@ import { fetchCourseListPage } from "./redux/action";
 const Courses = () => {
   const dispatch = useDispatch();
   const { coursePage } = useSelector((state) => state.homeReducer);
-  console.log(coursePage);
 
   useEffect(() => {
     dispatch(fetchCourseListPage());

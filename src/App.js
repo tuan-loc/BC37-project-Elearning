@@ -5,10 +5,13 @@ import AddUser from "features/Admin/Users/AddUser";
 import EditUser from "features/Admin/Users/EditUser";
 import UserList from "features/Admin/Users/UserList";
 import Category from "features/Home/Category";
+import EditProfile from "features/Home/EditProfile";
+import Profile from "features/Home/Profile";
 import CourseCategory from "features/Home/CourseCategory";
 import Courses from "features/Home/Courses";
 import DetailCourse from "features/Home/DetailCourse";
 import Home from "features/Home/Home";
+import MyCourse from "features/Home/MyCourse";
 import Signin from "features/User/Signin";
 import Signup from "features/User/Signup";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -16,6 +19,7 @@ import AdminTemplate from "templates/AdminTemplate/AdminTemplate";
 import HomeTemplate from "templates/HomeTemplate/HomeTemplate";
 import UserTemplate from "templates/UserTemplate/UserTemplate";
 import "./App.css";
+import Search from "features/Home/Search";
 
 function App() {
   return (
@@ -35,6 +39,10 @@ function App() {
             exact
             element={<DetailCourse />}
           />
+          <Route path="/profile" exact element={<Profile />} />
+          <Route path="/edit-profile" exact element={<EditProfile />} />
+          <Route path="/mycourse" exact element={<MyCourse />} />
+          <Route path="/tim-kiem/:id" exact element={<Search />} />
         </Route>
         <Route path="/admin" exact element={<AdminTemplate />}>
           <Route path="/admin/users" exact element={<UserList />} />

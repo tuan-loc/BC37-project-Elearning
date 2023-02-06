@@ -21,3 +21,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+:where(.css-dev-only-do-not-override-1ogn5om).ant-menu-light.ant-menu-horizontal
+  > .ant-menu-item:hover::after,
+:where(.css-dev-only-do-not-override-1ogn5om).ant-menu-light.ant-menu-horizontal
+  > .ant-menu-submenu:hover::after,
+:where(.css-dev-only-do-not-override-1ogn5om).ant-menu-light.ant-menu-horizontal
+  > .ant-menu-item-active::after,
+:where(.css-dev-only-do-not-override-1ogn5om).ant-menu-light.ant-menu-horizontal
+  > .ant-menu-submenu-active::after,
+:where(.css-dev-only-do-not-override-1ogn5om).ant-menu-light.ant-menu-horizontal
+  > .ant-menu-item-open::after,
+:where(.css-dev-only-do-not-override-1ogn5om).ant-menu-light.ant-menu-horizontal
+  > .ant-menu-submenu-open::after {
+  border-bottom-color: transparent;
+  border-bottom-width: 0px;
+}

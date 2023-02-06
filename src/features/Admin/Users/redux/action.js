@@ -40,7 +40,7 @@ export const searchUserAction = (tuKhoa) => async (next) => {
 export const updateUserAction = (formData) => async (next) => {
   try {
     await updateUser(formData);
-    alert("Cập nhật người dùng thành công");
+    alert("Cập nhật thành công");
     next(fetchUserAction());
   } catch (error) {
     console.log(error);

@@ -1,68 +1,142 @@
-import React from "react";
+import { Input, Menu } from "antd";
+import { fetchCategoryCourseAction } from "features/Admin/Courses/redux/actions";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
+
+const { Search } = Input;
 
 const Header = () => {
-  return (
-    <header className="p-4 dark:bg-gray-800 dark:text-gray-100">
-      <div className="container flex justify-between h-16 mx-auto">
-        <a
-          rel="noopener noreferrer"
-          href="#"
-          aria-label="Back to homepage"
-          className="flex items-center p-2"
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { userSignin } = useSelector((state) => state.userReducer);
+  const { categoryCourse } = useSelector((state) => state.courseListReducer);
+
+  useEffect(() => {
+    dispatch(fetchCategoryCourseAction);
+  }, []);
+
+  const onSearch = (value) => {
+    return navigate(`/tim-kiem/${value}`);
+  };
+
+  const items = [
+    {
+      label: (
+        <NavLink
+          to="/danh-muc-khoa-hoc"
+          className="text-white hover:text-yellow-500"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 32 32"
-            className="w-8 h-8 dark:text-violet-400"
-          >
-            <path d="M27.912 7.289l-10.324-5.961c-0.455-0.268-1.002-0.425-1.588-0.425s-1.133 0.158-1.604 0.433l0.015-0.008-10.324 5.961c-0.955 0.561-1.586 1.582-1.588 2.75v11.922c0.002 1.168 0.635 2.189 1.574 2.742l0.016 0.008 10.322 5.961c0.455 0.267 1.004 0.425 1.59 0.425 0.584 0 1.131-0.158 1.602-0.433l-0.014 0.008 10.322-5.961c0.955-0.561 1.586-1.582 1.588-2.75v-11.922c-0.002-1.168-0.633-2.189-1.573-2.742zM27.383 21.961c0 0.389-0.211 0.73-0.526 0.914l-0.004 0.002-10.324 5.961c-0.152 0.088-0.334 0.142-0.53 0.142s-0.377-0.053-0.535-0.145l0.005 0.002-10.324-5.961c-0.319-0.186-0.529-0.527-0.529-0.916v-11.922c0-0.389 0.211-0.73 0.526-0.914l0.004-0.002 10.324-5.961c0.152-0.090 0.334-0.143 0.53-0.143s0.377 0.053 0.535 0.144l-0.006-0.002 10.324 5.961c0.319 0.185 0.529 0.527 0.529 0.916z" />
-            <path d="M22.094 19.451h-0.758c-0.188 0-0.363 0.049-0.515 0.135l0.006-0.004-4.574 2.512-5.282-3.049v-6.082l5.282-3.051 4.576 2.504c0.146 0.082 0.323 0.131 0.508 0.131h0.758c0.293 0 0.529-0.239 0.529-0.531v-0.716c0-0.2-0.11-0.373-0.271-0.463l-0.004-0.002-5.078-2.777c-0.293-0.164-0.645-0.26-1.015-0.26-0.39 0-0.756 0.106-1.070 0.289l0.010-0.006-5.281 3.049c-0.636 0.375-1.056 1.055-1.059 1.834v6.082c0 0.779 0.422 1.461 1.049 1.828l0.009 0.006 5.281 3.049c0.305 0.178 0.67 0.284 1.061 0.284 0.373 0 0.723-0.098 1.027-0.265l-0.012 0.006 5.080-2.787c0.166-0.091 0.276-0.265 0.276-0.465v-0.716c0-0.293-0.238-0.529-0.529-0.529z" />
-          </svg>
-        </a>
-        <ul className="items-stretch hidden space-x-3 lg:flex">
-          <li className="flex">
-            <a
-              rel="noopener noreferrer"
-              href="#"
-              className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400"
-            >
-              Link
-            </a>
+          <i className="fa-solid fa-list"></i>
+          <span className="ml-2">Danh mục khóa học</span>
+        </NavLink>
+      ),
+      key: "danhMucKhoaHoc",
+      children: categoryCourse.map((category) => {
+        return {
+          label: (
+            <NavLink to={`/danhmuckhoahoc/${category.maDanhMuc}`}>
+              {category.tenDanhMuc}
+            </NavLink>
+          ),
+          key: category.maDanhMuc,
+        };
+      }),
+    },
+  ];
+
+  return (
+    <header className="p-4 bg-gray-900 text-gray-100 sticky top-0 z-50">
+      <div className="container flex justify-between h-16 mx-auto">
+        <NavLink to="/">
+          <img
+            src="/img/600e8df5132cb60024b04964.jpg"
+            alt=""
+            className="w-40"
+          />
+        </NavLink>
+        <Search
+          size="large"
+          placeholder="Tìm kiếm khóa học"
+          onSearch={onSearch}
+          enterButton
+          className="w-96 relative top-3"
+        />
+        <ul className="items-center hidden lg:flex">
+          <li className="flex items-center">
+            <Menu
+              mode="horizontal"
+              items={items}
+              className="bg-transparent text-white text-base w-52 relative top-0"
+            />
           </li>
           <li className="flex">
-            <a
+            <NavLink
+              to="/khoa-hoc"
               rel="noopener noreferrer"
               href="#"
-              className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent"
+              className="flex items-center pr-2 text-white hover:text-yellow-500 no-underline"
             >
-              Link
-            </a>
+              Khóa học
+            </NavLink>
           </li>
           <li className="flex">
-            <a
+            <NavLink
+              to="/"
               rel="noopener noreferrer"
               href="#"
-              className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent"
+              className="flex items-center px-2 text-white hover:text-yellow-500 no-underline"
             >
-              Link
-            </a>
+              Blog
+            </NavLink>
           </li>
           <li className="flex">
-            <a
+            <NavLink
+              to="/"
               rel="noopener noreferrer"
               href="#"
-              className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent"
+              className="flex items-center px-2 text-white hover:text-yellow-500 no-underline"
             >
-              Link
-            </a>
+              Sự kiện
+            </NavLink>
+          </li>
+          <li className="flex">
+            <NavLink
+              to="/"
+              rel="noopener noreferrer"
+              href="#"
+              className="flex items-center px-2 text-white hover:text-yellow-500 no-underline"
+            >
+              Thông tin
+            </NavLink>
           </li>
         </ul>
         <div className="items-center flex-shrink-0 hidden lg:flex">
-          <button className="self-center px-8 py-3 rounded">Sign in</button>
-          <button className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">
-            Sign up
-          </button>
+          {userSignin.taiKhoan ? (
+            <div>
+              <NavLink to="/mycourse" className="text-white no-underline mr-4">
+                <i className="fa-solid fa-circle-play mr-1"></i>
+                Khóa học của tôi
+              </NavLink>
+              <NavLink to="/profile" className="text-yellow-500 no-underline">
+                <i className="fa-solid fa-circle-user mr-1"></i>
+                {userSignin.hoTen}
+              </NavLink>
+            </div>
+          ) : (
+            <>
+              <NavLink to="/user/signup">
+                <button className="self-center px-8 py-3 rounded cursor-pointer">
+                  Đăng ký
+                </button>
+              </NavLink>
+              <NavLink to="/user/signin">
+                <button className="self-center px-8 py-3 font-semibold rounded bg-yellow-500 text-gray-900 cursor-pointer">
+                  Đăng nhập
+                </button>
+              </NavLink>
+            </>
+          )}
         </div>
         <button className="p-4 lg:hidden">
           <svg
